@@ -1,0 +1,13 @@
+C:\Users\Keeplod\Desktop\DuelsServer\DuelsServer\bin\Debug\net60\DuelsServer.deps.json
+C:\Users\Keeplod\Desktop\DuelsServer\DuelsServer\bin\Debug\net60\DuelsServer.dll
+C:\Users\Keeplod\Desktop\DuelsServer\DuelsServer\bin\Debug\net60\DuelsServer.pdb
+C:\Users\Keeplod\Desktop\DuelsServer\DuelsServer\obj\Debug\net60\DuelsServer.csproj.AssemblyReference.cache
+C:\Users\Keeplod\Desktop\DuelsServer\DuelsServer\obj\Debug\net60\MyPluginInfo.cs
+C:\Users\Keeplod\Desktop\DuelsServer\DuelsServer\obj\Debug\net60\DuelsServer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Keeplod\Desktop\DuelsServer\DuelsServer\obj\Debug\net60\DuelsServer.AssemblyInfoInputs.cache
+C:\Users\Keeplod\Desktop\DuelsServer\DuelsServer\obj\Debug\net60\DuelsServer.AssemblyInfo.cs
+C:\Users\Keeplod\Desktop\DuelsServer\DuelsServer\obj\Debug\net60\DuelsServer.csproj.CoreCompileInputs.cache
+C:\Users\Keeplod\Desktop\DuelsServer\DuelsServer\obj\Debug\net60\DuelsServer.dll
+C:\Users\Keeplod\Desktop\DuelsServer\DuelsServer\obj\Debug\net60\refint\DuelsServer.dll
+C:\Users\Keeplod\Desktop\DuelsServer\DuelsServer\obj\Debug\net60\DuelsServer.pdb
+C:\Users\Keeplod\Desktop\DuelsServer\DuelsServer\obj\Debug\net60\ref\DuelsServer.dll

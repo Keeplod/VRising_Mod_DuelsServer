@@ -1,0 +1,92 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Keeplod\\Desktop\\DuelsServer\\DuelsServer\\DuelsServer.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Keeplod\\Desktop\\DuelsServer\\DuelsServer\\DuelsServer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Keeplod\\Desktop\\DuelsServer\\DuelsServer\\DuelsServer.csproj",
+        "projectName": "DuelsServer",
+        "projectPath": "C:\\Users\\Keeplod\\Desktop\\DuelsServer\\DuelsServer\\DuelsServer.csproj",
+        "packagesPath": "C:\\Users\\Keeplod\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Keeplod\\Desktop\\DuelsServer\\DuelsServer\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Keeplod\\Desktop\\DuelsServer\\DuelsServer\\NuGet.Config",
+          "C:\\Users\\Keeplod\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net60"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.bepinex.dev/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net60",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net60",
+          "dependencies": {
+            "BepInEx.Core": {
+              "target": "Package",
+              "version": "[6.0.0-be.670, )"
+            },
+            "BepInEx.PluginInfoProps": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
+            "BepInEx.Unity.IL2CPP": {
+              "target": "Package",
+              "version": "[6.0.0-be.670, )"
+            },
+            "VRising.Unhollowed.Client": {
+              "target": "Package",
+              "version": "[0.6.5.57575090, )"
+            },
+            "VRising.VampireCommandFramework": {
+              "target": "Package",
+              "version": "[0.8.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

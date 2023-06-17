@@ -9,9 +9,9 @@ namespace DuelsServer.Commands
     public static class Br
     {
         [Command("br", "b", description: "Восстановление способностей и здоровья", adminOnly: false)]
-        public static void GiveBloodPotionCommand(ChatCommandContext ctx)
+        public static void br(ChatCommandContext ctx)
         {
-            // Healing
+            // Health up
             var HealthEvent = new ChangeHealthDebugEvent()
             {
                 Amount = 1000,
@@ -45,6 +45,16 @@ namespace DuelsServer.Commands
             }
 
             ctx.Reply($"<color=#ff0>Востановлены абилки</color>");
+
+            // Blood up
+            var clientEvent = new ChangeBloodDebugEvent()
+            {
+                Amount = 100,
+            };
+
+            VWorld.Server.GetExistingSystem<DebugEventsSystem>().ChangeBloodEvent(ctx.Event.User.Index, ref clientEvent);
+
+            ctx.Reply($"<color=#ff0>Востановлена кровь</color>");
         }
 
         public static PrefabGUID GetPrefabGUID(Entity entity)

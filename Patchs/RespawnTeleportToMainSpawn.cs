@@ -3,6 +3,7 @@ using HarmonyLib;
 using Il2CppSystem;
 using ProjectM;
 using ProjectM.Network;
+using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;

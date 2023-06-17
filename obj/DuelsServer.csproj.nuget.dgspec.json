@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Keeplod\\Desktop\\DuelsServer\\DuelsServer\\DuelsServer.csproj": {}
+    "C:\\Users\\Keeplod\\Documents\\VRising_Mod_DuelsServer\\DuelsServer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Keeplod\\Desktop\\DuelsServer\\DuelsServer\\DuelsServer.csproj": {
+    "C:\\Users\\Keeplod\\Documents\\VRising_Mod_DuelsServer\\DuelsServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Keeplod\\Desktop\\DuelsServer\\DuelsServer\\DuelsServer.csproj",
+        "projectUniqueName": "C:\\Users\\Keeplod\\Documents\\VRising_Mod_DuelsServer\\DuelsServer.csproj",
         "projectName": "DuelsServer",
-        "projectPath": "C:\\Users\\Keeplod\\Desktop\\DuelsServer\\DuelsServer\\DuelsServer.csproj",
+        "projectPath": "C:\\Users\\Keeplod\\Documents\\VRising_Mod_DuelsServer\\DuelsServer.csproj",
         "packagesPath": "C:\\Users\\Keeplod\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Keeplod\\Desktop\\DuelsServer\\DuelsServer\\obj\\",
+        "outputPath": "C:\\Users\\Keeplod\\Documents\\VRising_Mod_DuelsServer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Keeplod\\Desktop\\DuelsServer\\DuelsServer\\NuGet.Config",
+          "C:\\Users\\Keeplod\\Documents\\VRising_Mod_DuelsServer\\NuGet.Config",
           "C:\\Users\\Keeplod\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -58,10 +58,6 @@
             "BepInEx.Unity.IL2CPP": {
               "target": "Package",
               "version": "[6.0.0-be.670, )"
-            },
-            "VRising.Bloodstone": {
-              "target": "Package",
-              "version": "[0.1.4, )"
             },
             "VRising.Unhollowed.Client": {
               "target": "Package",

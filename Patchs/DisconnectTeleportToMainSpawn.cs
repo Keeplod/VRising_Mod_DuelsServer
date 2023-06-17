@@ -9,11 +9,11 @@ using Unity.Mathematics;
 namespace DuelsServer.Hooks;
 
 [HarmonyPatch]
-public class ConnectTeleportToMainSpawn
+public class DisconnectTeleportToMainSpawn
 {
-    [HarmonyPatch(typeof(ServerBootstrapSystem), nameof(ServerBootstrapSystem.OnUserConnected))]
-    [HarmonyPostfix]
-    public static void Postfix(ServerBootstrapSystem __instance, NetConnectionId netConnectionId)
+    [HarmonyPatch(typeof(ServerBootstrapSystem), nameof(ServerBootstrapSystem.OnUserDisconnected))]
+    [HarmonyPrefix]
+    public static void Prefix(ServerBootstrapSystem __instance, NetConnectionId netConnectionId)
     {
         var entityManager = VWorld.Server.EntityManager;
         var userIndex = __instance._NetEndPointToApprovedUserIndex[netConnectionId];
@@ -32,7 +32,7 @@ public class ConnectTeleportToMainSpawn
         
         entityManager.SetComponentData<PlayerTeleportDebugEvent>(entity, new()
         {
-            Position = new float3((float)-1997.500, 5, (float)-2797.5000),
+            Position = new float3((float)-1403.53, (float)7.5, (float)-399.08),
             Target = PlayerTeleportDebugEvent.TeleportTarget.Self
         });
     }

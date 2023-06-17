@@ -2,9 +2,6 @@
 using UnityEngine;
 
 namespace DuelsServer.Helpers;
-/// <summary>
-/// Various utilities for interacting with the Unity ECS world.
-/// </summary>
 public static class VWorld
 {
     private static World _serverWorld;

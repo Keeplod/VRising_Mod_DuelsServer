@@ -16,8 +16,17 @@ namespace DuelsServer
         {
             _harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
             _harmony.PatchAll(Assembly.GetExecutingAssembly());
+            CommandRegistry.RegisterAll();
 
             Log.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} is loaded!");
+        }
+
+        public override bool Unload()
+        {
+            CommandRegistry.UnregisterAssembly();
+            _harmony.UnpatchSelf();
+
+            return true;
         }
     }
 }

@@ -18,7 +18,7 @@ namespace DuelsServer.Commands
             };
 
             VWorld.Server.GetExistingSystem<DebugEventsSystem>().ChangeHealthEvent(ctx.Event.User.Index, ref HealthEvent);
-            ctx.Reply($"<color=#ff0>Востановлено хп</color>");
+            //ctx.Reply($"<color=#ff0>Востановлено хп</color>");
 
             // Ability recover
             Entity PlayerCharacter = ctx.Event.SenderCharacterEntity;
@@ -44,7 +44,7 @@ namespace DuelsServer.Commands
                 }
             }
 
-            ctx.Reply($"<color=#ff0>Востановлены абилки</color>");
+            //ctx.Reply($"<color=#ff0>Востановлены абилки</color>");
 
             // Blood up
             var clientEvent = new ChangeBloodDebugEvent()
@@ -54,7 +54,7 @@ namespace DuelsServer.Commands
 
             VWorld.Server.GetExistingSystem<DebugEventsSystem>().ChangeBloodEvent(ctx.Event.User.Index, ref clientEvent);
 
-            ctx.Reply($"<color=#ff0>Востановлена кровь</color>");
+            //ctx.Reply($"<color=#ff0>Востановлена кровь</color>");
         }
 
         public static PrefabGUID GetPrefabGUID(Entity entity)

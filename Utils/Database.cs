@@ -23,5 +23,7 @@ namespace DuelsServer.Utils
         };
 
         public static Dictionary<string, TeleportsData> teleports { get; set; }
+        public static Dictionary<string, ArenasData> arenas { get; set; }
+        public static Dictionary<string, PlayerRatingData> rating { get; set; }
     }
 }

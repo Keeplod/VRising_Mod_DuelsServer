@@ -1,6 +1,7 @@
 ﻿using BepInEx;
 using BepInEx.Unity.IL2CPP;
 using DuelsServer.Commands;
+using DuelsServer.Utils;
 using HarmonyLib;
 using System.Reflection;
 using VampireCommandFramework;
@@ -19,6 +20,8 @@ namespace DuelsServer
             _harmony.PatchAll(Assembly.GetExecutingAssembly());
             CommandRegistry.RegisterAll();
             Teleport.LoadTeleports();
+            Rating.LoadRating();
+            Rating.LoadArenas();
 
             Log.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} is loaded!");
         }

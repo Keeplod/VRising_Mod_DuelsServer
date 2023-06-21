@@ -1,9 +1,12 @@
 ﻿using BepInEx;
 using BepInEx.Unity.IL2CPP;
 using DuelsServer.Commands;
+using DuelsServer.Helpers;
 using DuelsServer.Utils;
 using HarmonyLib;
+using ProjectM;
 using System.Reflection;
+using Unity.Entities;
 using VampireCommandFramework;
 
 namespace DuelsServer
@@ -13,6 +16,7 @@ namespace DuelsServer
     public class Plugin : BasePlugin
     {
         private Harmony _harmony;
+        public static EntityManager EntityManager => VWorld.Server.EntityManager;
 
         public override void Load()
         {
@@ -22,6 +26,7 @@ namespace DuelsServer
             Teleport.LoadTeleports();
             Rating.LoadRating();
             Rating.LoadArenas();
+            //OnGameInitialized();
 
             Log.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} is loaded!");
         }
@@ -33,5 +38,16 @@ namespace DuelsServer
 
             return true;
         }
+
+        //public void OnGameInitialized()
+        //{
+        //    Initialize();
+        //}
+        //
+        //public static void Initialize()
+        //{
+        //    DebugSystemHelper.SetDebugSetting(DebugSettingType.DropsDisabled, true);
+        //    DebugSystemHelper.SetDebugSetting(DebugSettingType.DayNightCycleDisabled, true);
+        //}
     }
 }

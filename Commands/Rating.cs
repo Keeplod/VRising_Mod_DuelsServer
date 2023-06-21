@@ -1,17 +1,25 @@
 ﻿using DuelsServer.Helpers;
 using DuelsServer.Utils;
+using Il2CppSystem;
 using ProjectM;
 using ProjectM.Network;
-using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text.Json;
 using Unity.Entities;
+using Unity.Mathematics;
 using Unity.Transforms;
 using VampireCommandFramework;
 
 namespace DuelsServer.Commands
 {
+    struct NullableFloat
+    {
+        public float3 value;
+        public bool has_value;
+    }
+
     public static class Rating
     {
         [Command("r", description: "[info|createArena|removeArena|setPoint1|setPoint2] [<name>] Рейтинговая арена.", adminOnly: false)]
@@ -23,11 +31,25 @@ namespace DuelsServer.Commands
             //Регистрация на арену
             if (arg1 == null)
             {
+                var pos = VWorld.Server.EntityManager.GetComponentData<LocalToWorld>(ctx.Event.SenderCharacterEntity).Position;
 
+                var sbs = VWorld.Server.GetExistingSystem<ServerBootstrapSystem>();
+                var bufferSystem = VWorld.Server.GetExistingSystem<EntityCommandBufferSystem>();
+                var buffer = bufferSystem.CreateCommandBuffer();
+
+                Nullable_Unboxed<float3> spawnLoc = new();
+                spawnLoc.value = pos;
+                spawnLoc.has_value = true;
+
+                sbs.RespawnCharacter(buffer, ctx.Event.SenderUserEntity,
+                    customSpawnLocation: spawnLoc,
+                    previousCharacter: ctx.Event.SenderCharacterEntity);
+
+                ctx.Reply("Revived");
             }
 
             // Информация о рейтинге игрока
-            if(arg1 == "info") 
+            if (arg1 == "info")
             {
                 ctx.Reply($"<color=#ff0>Информация об игроке {ctx.Event.User.CharacterName}</color>");
             }
@@ -60,12 +82,12 @@ namespace DuelsServer.Commands
                 {
                     Database.arenas.Remove(arg2);
                     SaveArenas();
-                    ctx.Reply(String.Format($"<color=#37DE6A>Арена \"{arg2}\" удалена.</color>"));
+                    ctx.Reply(System.String.Format($"<color=#37DE6A>Арена \"{arg2}\" удалена.</color>"));
                     return;
                 }
                 else
                 {
-                    ctx.Reply(String.Format($"<color=#FF0000>Арена \"{arg2}\" не найдена.</color>"));
+                    ctx.Reply(System.String.Format($"<color=#FF0000>Арена \"{arg2}\" не найдена.</color>"));
                     return;
                 }
             }
@@ -83,18 +105,18 @@ namespace DuelsServer.Commands
                 if (Database.arenas.TryGetValue(arg2, out arenasData))
                 {
                     var pos = VWorld.Server.EntityManager.GetComponentData<LocalToWorld>(ctx.Event.SenderCharacterEntity).Position;
-                    arenasData.XPoint1 = pos.x; 
-                    arenasData.YPoint1 = pos.y; 
+                    arenasData.XPoint1 = pos.x;
+                    arenasData.YPoint1 = pos.y;
                     arenasData.ZPoint1 = pos.z;
                     Database.arenas[arg2] = arenasData;
                     SaveArenas();
 
-                    ctx.Reply(String.Format($"<color=#37DE6A>Установлен 1й поинт для арены \"{arg2}\"</color>"));
+                    ctx.Reply(System.String.Format($"<color=#37DE6A>Установлен 1й поинт для арены \"{arg2}\"</color>"));
                     return;
                 }
                 else
                 {
-                    ctx.Reply(String.Format($"<color=#FF0000>Арена \"{arg2}\" не найдена.</color>"));
+                    ctx.Reply(System.String.Format($"<color=#FF0000>Арена \"{arg2}\" не найдена.</color>"));
                     return;
                 }
             }
@@ -118,12 +140,12 @@ namespace DuelsServer.Commands
                     Database.arenas[arg2] = arenasData;
                     SaveArenas();
 
-                    ctx.Reply(String.Format($"<color=#37DE6A>Установлен 2й поинт для арены \"{arg2}\"</color>"));
+                    ctx.Reply(System.String.Format($"<color=#37DE6A>Установлен 2й поинт для арены \"{arg2}\"</color>"));
                     return;
                 }
                 else
                 {
-                    ctx.Reply(String.Format($"<color=#FF0000>Арена \"{arg2}\" не найдена.</color>"));
+                    ctx.Reply(System.String.Format($"<color=#FF0000>Арена \"{arg2}\" не найдена.</color>"));
                     return;
                 }
             }

@@ -21,28 +21,29 @@ namespace DuelsServer.Commands
             //ctx.Reply($"<color=#ff0>Востановлено хп</color>");
 
             // Ability recover
-            Entity PlayerCharacter = ctx.Event.SenderCharacterEntity;
-            string name = ctx.Name;
-
-            var AbilityBuffer = VWorld.Server.EntityManager.GetBuffer<AbilityGroupSlotBuffer>(PlayerCharacter);
-            foreach (var ability in AbilityBuffer)
-            {
-                var AbilitySlot = ability.GroupSlotEntity._Entity;
-                var ActiveAbility = VWorld.Server.EntityManager.GetComponentData<AbilityGroupSlot>(AbilitySlot);
-                var ActiveAbility_Entity = ActiveAbility.StateEntity._Entity;
-
-                var b = GetPrefabGUID(ActiveAbility_Entity);
-                if (b.GuidHash == 0) continue;
-
-                var AbilityStateBuffer = VWorld.Server.EntityManager.GetBuffer<AbilityStateBuffer>(ActiveAbility_Entity);
-                foreach (var state in AbilityStateBuffer)
-                {
-                    var abilityState = state.StateEntity._Entity;
-                    var abilityCooldownState = VWorld.Server.EntityManager.GetComponentData<AbilityCooldownState>(abilityState);
-                    abilityCooldownState.CooldownEndTime = 0;
-                    VWorld.Server.EntityManager.SetComponentData(abilityState, abilityCooldownState);
-                }
-            }
+            CharacterHelpers.ResetSkillsCooldown(ctx.Event.SenderCharacterEntity);
+            //Entity PlayerCharacter = ctx.Event.SenderCharacterEntity;
+            //string name = ctx.Name;
+            //
+            //var AbilityBuffer = VWorld.Server.EntityManager.GetBuffer<AbilityGroupSlotBuffer>(PlayerCharacter);
+            //foreach (var ability in AbilityBuffer)
+            //{
+            //    var AbilitySlot = ability.GroupSlotEntity._Entity;
+            //    var ActiveAbility = VWorld.Server.EntityManager.GetComponentData<AbilityGroupSlot>(AbilitySlot);
+            //    var ActiveAbility_Entity = ActiveAbility.StateEntity._Entity;
+            //
+            //    var b = PrefabHelpers.GetPrefabGUID(ActiveAbility_Entity);
+            //    if (b.GuidHash == 0) continue;
+            //
+            //    var AbilityStateBuffer = VWorld.Server.EntityManager.GetBuffer<AbilityStateBuffer>(ActiveAbility_Entity);
+            //    foreach (var state in AbilityStateBuffer)
+            //    {
+            //        var abilityState = state.StateEntity._Entity;
+            //        var abilityCooldownState = VWorld.Server.EntityManager.GetComponentData<AbilityCooldownState>(abilityState);
+            //        abilityCooldownState.CooldownEndTime = 0;
+            //        VWorld.Server.EntityManager.SetComponentData(abilityState, abilityCooldownState);
+            //    }
+            //}
 
             //ctx.Reply($"<color=#ff0>Востановлены абилки</color>");
 
@@ -55,21 +56,6 @@ namespace DuelsServer.Commands
             VWorld.Server.GetExistingSystem<DebugEventsSystem>().ChangeBloodEvent(ctx.Event.User.Index, ref clientEvent);
 
             //ctx.Reply($"<color=#ff0>Востановлена кровь</color>");
-        }
-
-        public static PrefabGUID GetPrefabGUID(Entity entity)
-        {
-            var entityManager = VWorld.Server.EntityManager;
-            PrefabGUID guid;
-            try
-            {
-                guid = entityManager.GetComponentData<PrefabGUID>(entity);
-            }
-            catch
-            {
-                guid.GuidHash = 0;
-            }
-            return guid;
         }
     }
 }

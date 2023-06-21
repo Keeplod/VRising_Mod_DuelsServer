@@ -41,4 +41,10 @@
             Rating = rating;
         }
     }
+
+    public struct FakeNull
+    {
+        public int value;
+        public bool has_value;
+    }
 }

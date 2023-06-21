@@ -68,21 +68,23 @@ namespace DuelsServer.Commands
             TeleportsData teleportData;
             if (Database.teleports.TryGetValue(arg1, out teleportData))
             {
-                var entity = VWorld.Server.EntityManager.CreateEntity(
-                    ComponentType.ReadWrite<FromCharacter>(),
-                    ComponentType.ReadWrite<PlayerTeleportDebugEvent>()
-                );
+                CharacterHelpers.TeleportToPos(ctx.Event.SenderUserEntity, new float3(teleportData.X, teleportData.Y, teleportData.Z));
 
-                VWorld.Server.EntityManager.SetComponentData<FromCharacter>(entity, new()
-                {
-                    User = ctx.Event.SenderUserEntity
-                });
-
-                VWorld.Server.EntityManager.SetComponentData<PlayerTeleportDebugEvent>(entity, new()
-                {
-                    Position = new float3(teleportData.X, teleportData.Y, teleportData.Z),
-                    Target = PlayerTeleportDebugEvent.TeleportTarget.Self
-                });
+                //var entity = VWorld.Server.EntityManager.CreateEntity(
+                //    ComponentType.ReadWrite<FromCharacter>(),
+                //    ComponentType.ReadWrite<PlayerTeleportDebugEvent>()
+                //);
+                //
+                //VWorld.Server.EntityManager.SetComponentData<FromCharacter>(entity, new()
+                //{
+                //    User = ctx.Event.SenderUserEntity
+                //});
+                //
+                //VWorld.Server.EntityManager.SetComponentData<PlayerTeleportDebugEvent>(entity, new()
+                //{
+                //    Position = new float3(teleportData.X, teleportData.Y, teleportData.Z),
+                //    Target = PlayerTeleportDebugEvent.TeleportTarget.Self
+                //});
                 return;
             }
             else

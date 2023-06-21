@@ -9,7 +9,7 @@ namespace DuelsServer.Helpers
 {
     public static class CharacterHelpers
     {
-        public static void TeleportToPos(Entity userEntity, /*Entity characterEntity,*/ float3 pos)
+        public static void TeleportToPos(Entity userEntity, float3 pos)
         {
             var entity = Plugin.EntityManager.CreateEntity(
                     ComponentType.ReadWrite<FromCharacter>(),
@@ -17,22 +17,19 @@ namespace DuelsServer.Helpers
 
             Plugin.EntityManager.SetComponentData<FromCharacter>(entity, new()
             {
-                User = userEntity,
-                //Character = characterEntity
+                User = userEntity
             });
 
             Plugin.EntityManager.SetComponentData<PlayerTeleportDebugEvent>(entity, new()
             {
                 Position = new float3(pos.x, pos.y, pos.z),
-                //Target = PlayerTeleportDebugEvent.TeleportTarget.Self
+                Target = PlayerTeleportDebugEvent.TeleportTarget.Self
             });
         }
 
         public static void RespawnCharacter(Entity VictimEntity, PlayerCharacter player, Entity userEntity)
         {
             var pos = VWorld.Server.EntityManager.GetComponentData<LocalToWorld>(VictimEntity).Position;
-            //var pos = player.LastValidPosition;
-            var sbs = VWorld.Server.GetExistingSystem<ServerBootstrapSystem>();
             var bufferSystem = VWorld.Server.GetExistingSystem<EntityCommandBufferSystem>();
             var commandBufferSafe = bufferSystem.CreateCommandBuffer();
 

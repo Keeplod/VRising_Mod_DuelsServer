@@ -2,9 +2,7 @@
 using BepInEx.Unity.IL2CPP;
 using DuelsServer.Commands;
 using DuelsServer.Helpers;
-using DuelsServer.Utils;
 using HarmonyLib;
-using ProjectM;
 using System.Reflection;
 using Unity.Entities;
 using VampireCommandFramework;
@@ -26,7 +24,6 @@ namespace DuelsServer
             Teleport.LoadTeleports();
             Rating.LoadRating();
             Rating.LoadArenas();
-            //OnGameInitialized();
 
             Log.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} is loaded!");
         }
@@ -38,16 +35,5 @@ namespace DuelsServer
 
             return true;
         }
-
-        //public void OnGameInitialized()
-        //{
-        //    Initialize();
-        //}
-        //
-        //public static void Initialize()
-        //{
-        //    DebugSystemHelper.SetDebugSetting(DebugSettingType.DropsDisabled, true);
-        //    DebugSystemHelper.SetDebugSetting(DebugSettingType.DayNightCycleDisabled, true);
-        //}
     }
 }

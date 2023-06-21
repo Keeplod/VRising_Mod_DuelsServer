@@ -31,21 +31,7 @@ namespace DuelsServer.Commands
             //Регистрация на арену
             if (arg1 == null)
             {
-                var pos = VWorld.Server.EntityManager.GetComponentData<LocalToWorld>(ctx.Event.SenderCharacterEntity).Position;
 
-                var sbs = VWorld.Server.GetExistingSystem<ServerBootstrapSystem>();
-                var bufferSystem = VWorld.Server.GetExistingSystem<EntityCommandBufferSystem>();
-                var buffer = bufferSystem.CreateCommandBuffer();
-
-                Nullable_Unboxed<float3> spawnLoc = new();
-                spawnLoc.value = pos;
-                spawnLoc.has_value = true;
-
-                sbs.RespawnCharacter(buffer, ctx.Event.SenderUserEntity,
-                    customSpawnLocation: spawnLoc,
-                    previousCharacter: ctx.Event.SenderCharacterEntity);
-
-                ctx.Reply("Revived");
             }
 
             // Информация о рейтинге игрока

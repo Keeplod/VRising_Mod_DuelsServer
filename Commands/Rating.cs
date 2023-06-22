@@ -1,4 +1,5 @@
-﻿using DuelsServer.Helpers;
+﻿using DuelsServer.Common.Prefabs;
+using DuelsServer.Helpers;
 using DuelsServer.Utils;
 using Il2CppSystem;
 using ProjectM;

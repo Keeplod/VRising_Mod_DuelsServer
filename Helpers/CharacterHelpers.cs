@@ -1,4 +1,5 @@
-﻿using Il2CppSystem;
+﻿using DuelsServer.Common.Prefabs;
+using Il2CppSystem;
 using ProjectM;
 using ProjectM.Network;
 using Unity.Entities;
@@ -42,16 +43,35 @@ namespace DuelsServer.Helpers
             server.RespawnCharacter(commandBufferSafe, userEntity, customSpawnLocation: spawnLoc, previousCharacter: VictimEntity, fadeOutEntity: userEntity);
         }
 
-        public static void ClearInventory(Entity characterEntity)
+        public static void ClearInventory(Entity characterEntity, bool isDeleteArmor = true)
         {
             if (!InventoryUtilities.TryGetInventoryEntity(Plugin.EntityManager, characterEntity, out Entity playerInventory) || playerInventory == Entity.Null)
                 return;
 
-            var inventoryBuffer = Plugin.EntityManager.GetBuffer<InventoryBuffer>(playerInventory);
-
-            foreach (var inventoryItem in inventoryBuffer)
+            if (isDeleteArmor)
             {
-                InventoryUtilitiesServer.TryRemoveItem(Plugin.EntityManager, playerInventory, inventoryItem.ItemType, inventoryItem.Amount);
+                InventoryUtilitiesServer.ClearInventory(Plugin.EntityManager, playerInventory);
+            }
+            else
+            {
+                var inventoryBuffer = Plugin.EntityManager.GetBuffer<InventoryBuffer>(playerInventory);
+
+                foreach (var inventoryItem in inventoryBuffer)
+                {
+
+                    bool isDelete = true;
+                    foreach (var item in IItemPrefabs.allArmors)
+                    {
+                        if (inventoryItem.ItemType == item)
+                        {
+                            isDelete = false;
+                        }
+                    }
+                    if (isDelete)
+                    {
+                        InventoryUtilitiesServer.TryRemoveItem(Plugin.EntityManager, playerInventory, inventoryItem.ItemType, inventoryItem.Amount);
+                    }
+                }
             }
         }
 

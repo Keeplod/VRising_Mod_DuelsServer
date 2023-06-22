@@ -1,5 +1,6 @@
-﻿using DuelsServer.Helpers;
-using ProjectM;
+﻿using DuelsServer.Common.Prefabs;
+using DuelsServer.Helpers;
+using System;
 using VampireCommandFramework;
 
 namespace DuelsServer.Commands
@@ -9,25 +10,30 @@ namespace DuelsServer.Commands
         [Command("kit", usage: ".kit", description: "Набор предметов")]
         public static void KitCommand(ChatCommandContext ctx)
         {
-            ItemHelper.AddItemToInventory(ctx.Event.SenderCharacterEntity, new PrefabGUID(488592933), 1);
-            ItemHelper.AddItemToInventory(ctx.Event.SenderCharacterEntity, new PrefabGUID(-556769032), 1);
-            ItemHelper.AddItemToInventory(ctx.Event.SenderCharacterEntity, new PrefabGUID(1634690081), 1);
-            ItemHelper.AddItemToInventory(ctx.Event.SenderCharacterEntity, new PrefabGUID(1292986377), 1);
-            ItemHelper.AddItemToInventory(ctx.Event.SenderCharacterEntity, new PrefabGUID(82446940), 1);
-            ItemHelper.AddItemToInventory(ctx.Event.SenderCharacterEntity, new PrefabGUID(-674860200), 1);
+            CharacterHelpers.ClearInventory(ctx.Event.SenderCharacterEntity, true);
 
-            ItemHelper.AddItemToInventory(ctx.Event.SenderCharacterEntity, new PrefabGUID(-175650376), 1);
-            ItemHelper.AddItemToInventory(ctx.Event.SenderCharacterEntity, new PrefabGUID(-296161379), 1);
-            ItemHelper.AddItemToInventory(ctx.Event.SenderCharacterEntity, new PrefabGUID(1380368392), 1);
+            Random random = new Random();
 
-            ItemHelper.AddItemToInventory(ctx.Event.SenderCharacterEntity, new PrefabGUID(-2044057823), 1);
-            ItemHelper.AddItemToInventory(ctx.Event.SenderCharacterEntity, new PrefabGUID(1389040540), 1);
-            ItemHelper.AddItemToInventory(ctx.Event.SenderCharacterEntity, new PrefabGUID(-126076280), 1);
-            ItemHelper.AddItemToInventory(ctx.Event.SenderCharacterEntity, new PrefabGUID(-2053917766), 1);
-            ItemHelper.AddItemToInventory(ctx.Event.SenderCharacterEntity, new PrefabGUID(1322545846), 1);
-            ItemHelper.AddItemToInventory(ctx.Event.SenderCharacterEntity, new PrefabGUID(-774462329), 1);
-            ItemHelper.AddItemToInventory(ctx.Event.SenderCharacterEntity, new PrefabGUID(1887724512), 1);
-            ItemHelper.AddItemToInventory(ctx.Event.SenderCharacterEntity, new PrefabGUID(-850142339), 1);
+            foreach (var prefab in IItemPrefabs.weaponList)
+            {
+                ItemHelper.AddItemToInventory(ctx.Event.SenderCharacterEntity, prefab, 1);
+            }
+
+            foreach (var prefab in IItemPrefabs.equipmentList)
+            {
+                ItemHelper.AddItemToInventory(ctx.Event.SenderCharacterEntity, prefab, 1);
+            }
+
+            foreach (var prefab in IItemPrefabs.magicSourceList)
+            {
+                ItemHelper.AddItemToInventory(ctx.Event.SenderCharacterEntity, prefab, 1);
+            }
+
+            int randomIndex = random.Next(IItemPrefabs.headgearList.Count);
+            ItemHelper.AddItemToInventory(ctx.Event.SenderCharacterEntity, IItemPrefabs.headgearList[randomIndex], 1);
+
+            randomIndex = random.Next(IItemPrefabs.cloakList.Count);
+            ItemHelper.AddItemToInventory(ctx.Event.SenderCharacterEntity, IItemPrefabs.cloakList[randomIndex], 1);
         }
     }
 }

@@ -37,15 +37,15 @@ namespace DuelsServer.Common.Prefabs
         public static readonly PrefabGUID Item_MagicSource_General_T08_WickedProphet = new(-175650376); // Амулет нечестивого пророка
 
         // Оружие
-        public static readonly PrefabGUID Item_Weapon_Sword_T08_Sanguine = new(-774462329); // Меч
         public static readonly PrefabGUID Item_Weapon_Spear_T08_Sanguine = new(-850142339); // Копьё
-        public static readonly PrefabGUID Item_Weapon_Slashers_T08_Sanguine = new(1322545846); // Клинки
-        public static readonly PrefabGUID Item_Weapon_Reaper_T08_Sanguine = new(-2053917766); // Коса
-        public static readonly PrefabGUID Item_Weapon_Mace_T08_Sanguine = new(-126076280); // Булава
-        public static readonly PrefabGUID Item_Weapon_Crossbow_T08_Sanguine = new(1389040540); // Арбалет
         public static readonly PrefabGUID Item_Weapon_Axe_T08_Sanguine = new(-2044057823); // Топоры
+        public static readonly PrefabGUID Item_Weapon_Slashers_T08_Sanguine = new(1322545846); // Клинки
+        public static readonly PrefabGUID Item_Weapon_Mace_T08_Sanguine = new(-126076280); // Булава
         public static readonly PrefabGUID Item_Weapon_Pistols_T08_Sanguine = new(1071656850); // Пистолеты
+        public static readonly PrefabGUID Item_Weapon_Sword_T08_Sanguine = new(-774462329); // Меч
         public static readonly PrefabGUID Item_Weapon_GreatSword_T08_Sanguine = new(147836723); // Двуручный меч
+        public static readonly PrefabGUID Item_Weapon_Reaper_T08_Sanguine = new(-2053917766); // Коса
+        public static readonly PrefabGUID Item_Weapon_Crossbow_T08_Sanguine = new(1389040540); // Арбалет
 
         // Голова
         public static readonly PrefabGUID Item_Headgear_WolfTrophy01 = new(-1169471531); // Волчья голова
@@ -79,25 +79,26 @@ namespace DuelsServer.Common.Prefabs
         public static readonly PrefabGUID Item_Headgear_AshfolkCrown = new(-1988816037); // Корона Эшфолка
 
         // Плащи
-        public static readonly PrefabGUID Item_Cloak_T02_WildlingBlue = new(239338934); // Ледяной плащ Эшфолка
-        public static readonly PrefabGUID Item_Cloak_T02_WildlingRed = new(-1023114892); // Огненный плащ Эшфолка
-        public static readonly PrefabGUID Item_Cloak_T02_Tailor = new(-2081646636); // Шарф Беатрисы
-        public static readonly PrefabGUID Item_Cloak_T02_Cardinal = new(-1768698241); // Плащ кардинала
-        public static readonly PrefabGUID Item_Cloak_T03_CrimsonWard = new(-1755568324); // Багровая пелерина
-        public static readonly PrefabGUID Item_Cloak_T02_MilitiaMonk = new(2147390246); // Косынка отшельника
-        public static readonly PrefabGUID Item_Cloak_Main_T02_Hunter = new(786585343); // Плащ охотника
-        public static readonly PrefabGUID Item_Cloak_T02_Dracula = new(-1067360120); // Плащ бессмертного короля
-        public static readonly PrefabGUID Item_Cloak_T03_Dracula = new(-1814109557); // Мантия бессмертного короля
-        public static readonly PrefabGUID Item_Cloak_T02_HolyPaladin = new(-2091288477); // Косынка маны
-        public static readonly PrefabGUID Item_Cloak_Main_T03_Phantom = new(-227965303); // Вуаль призрака
-        public static readonly PrefabGUID Item_Cloak_T02_HarpyMatriarch = new(1677983904); // Капюшон с фиолетовыми перьями
-        public static readonly PrefabGUID Item_Cloak_T03_Razer = new(136740861); // Островерхая мантия змея
-        public static readonly PrefabGUID Item_Cloak_T03_Royal = new(584164197); // Мантия королей Эшфолка
-        public static readonly PrefabGUID Item_Cloak_T03_Jester = new(379281083); // Королевская вуаль шута
-        public static readonly PrefabGUID Item_Cloak_T03_UnholyShroud = new(1863126275); // Хвост сатаны
-        public static readonly PrefabGUID Item_Cloak_T02_PatchedCloak = new(1275572025); // Шитый-перешитый плащ
-        public static readonly PrefabGUID Item_Cloak_T02_Poloma = new(-589858836); // Капюшон с перьями токи
-        public static readonly PrefabGUID Item_Cloak_T02_TornRags = new(707710831); // Истерзанный багровый плащ
+        public static readonly PrefabGUID Item_Cloak_T03_CrimsonWard = new(-1755568324); // Багровая пелерина +24хп
+        public static readonly PrefabGUID Item_Cloak_T03_Dracula = new(-1814109557); // Мантия бессмертного короля +24хп
+        public static readonly PrefabGUID Item_Cloak_Main_T03_Phantom = new(-227965303); // Вуаль призрака +24хп
+        public static readonly PrefabGUID Item_Cloak_T03_Razer = new(136740861); // Островерхая мантия змея +24хп
+        public static readonly PrefabGUID Item_Cloak_T03_Royal = new(584164197); // Мантия королей Эшфолка +24хп
+        public static readonly PrefabGUID Item_Cloak_T03_Jester = new(379281083); // Королевская вуаль шута +24хп
+        public static readonly PrefabGUID Item_Cloak_T03_UnholyShroud = new(1863126275); // Хвост сатаны +24хп
+        //public static readonly PrefabGUID Item_Cloak_T02_WildlingBlue = new(239338934); // Ледяной плащ Эшфолка +18хп
+        //public static readonly PrefabGUID Item_Cloak_T02_WildlingRed = new(-1023114892); // Огненный плащ Эшфолка +18хп
+        //public static readonly PrefabGUID Item_Cloak_T02_Tailor = new(-2081646636); // Шарф Беатрисы +18хп
+        //public static readonly PrefabGUID Item_Cloak_T02_Cardinal = new(-1768698241); // Плащ кардинала +18хп
+        //public static readonly PrefabGUID Item_Cloak_T02_MilitiaMonk = new(2147390246); // Косынка отшельника +18хп
+        //public static readonly PrefabGUID Item_Cloak_Main_T02_Hunter = new(786585343); // Плащ охотника +18хп
+        //public static readonly PrefabGUID Item_Cloak_T02_Dracula = new(-1067360120); // Плащ бессмертного короля +18хп
+        //public static readonly PrefabGUID Item_Cloak_T02_HolyPaladin = new(-2091288477); // Косынка маны +18хп
+        //public static readonly PrefabGUID Item_Cloak_T02_HarpyMatriarch = new(1677983904); // Капюшон с фиолетовыми перьями +18хп
+        //public static readonly PrefabGUID Item_Cloak_T02_PatchedCloak = new(1275572025); // Шитый-перешитый плащ +18хп
+        //public static readonly PrefabGUID Item_Cloak_T02_Poloma = new(-589858836); // Капюшон с перьями токи +18хп
+        //public static readonly PrefabGUID Item_Cloak_T02_TornRags = new(707710831); // Истерзанный багровый плащ +18хп
+
 
         public static readonly System.Collections.Generic.List<PrefabGUID> consumableList = new System.Collections.Generic.List<PrefabGUID>()
         {
@@ -180,48 +181,48 @@ namespace DuelsServer.Common.Prefabs
 
         public static readonly System.Collections.Generic.List<PrefabGUID> cloakList = new System.Collections.Generic.List<PrefabGUID>()
         {
-            Item_Cloak_T02_WildlingBlue,
-            Item_Cloak_T02_WildlingRed,
-            Item_Cloak_T02_Tailor,
-            Item_Cloak_T02_Cardinal,
             Item_Cloak_T03_CrimsonWard,
-            Item_Cloak_T02_MilitiaMonk,
-            Item_Cloak_Main_T02_Hunter,
-            Item_Cloak_T02_Dracula,
             Item_Cloak_T03_Dracula,
-            Item_Cloak_T02_HolyPaladin,
             Item_Cloak_Main_T03_Phantom,
-            Item_Cloak_T02_HarpyMatriarch,
             Item_Cloak_T03_Razer,
             Item_Cloak_T03_Royal,
             Item_Cloak_T03_Jester,
             Item_Cloak_T03_UnholyShroud,
-            Item_Cloak_T02_PatchedCloak,
-            Item_Cloak_T02_Poloma,
-            Item_Cloak_T02_TornRags
+            //Item_Cloak_T02_WildlingBlue,
+            //Item_Cloak_T02_WildlingRed,
+            //Item_Cloak_T02_Tailor,
+            //Item_Cloak_T02_Cardinal,
+            //Item_Cloak_T02_MilitiaMonk,
+            //Item_Cloak_Main_T02_Hunter,
+            //Item_Cloak_T02_Dracula,
+            //Item_Cloak_T02_HolyPaladin,
+            //Item_Cloak_T02_HarpyMatriarch,
+            //Item_Cloak_T02_PatchedCloak,
+            //Item_Cloak_T02_Poloma,
+            //Item_Cloak_T02_TornRags
         };
 
         public static readonly System.Collections.Generic.List<PrefabGUID> allArmors = new System.Collections.Generic.List<PrefabGUID>()
         {
-            Item_Cloak_T02_WildlingBlue,
-            Item_Cloak_T02_WildlingRed,
-            Item_Cloak_T02_Tailor,
-            Item_Cloak_T02_Cardinal,
             Item_Cloak_T03_CrimsonWard,
-            Item_Cloak_T02_MilitiaMonk,
-            Item_Cloak_Main_T02_Hunter,
-            Item_Cloak_T02_Dracula,
             Item_Cloak_T03_Dracula,
-            Item_Cloak_T02_HolyPaladin,
             Item_Cloak_Main_T03_Phantom,
-            Item_Cloak_T02_HarpyMatriarch,
             Item_Cloak_T03_Razer,
             Item_Cloak_T03_Royal,
             Item_Cloak_T03_Jester,
             Item_Cloak_T03_UnholyShroud,
-            Item_Cloak_T02_PatchedCloak,
-            Item_Cloak_T02_Poloma,
-            Item_Cloak_T02_TornRags,
+            //Item_Cloak_T02_WildlingBlue,
+            //Item_Cloak_T02_WildlingRed,
+            //Item_Cloak_T02_Tailor,
+            //Item_Cloak_T02_Cardinal,
+            //Item_Cloak_T02_MilitiaMonk,
+            //Item_Cloak_Main_T02_Hunter,
+            //Item_Cloak_T02_Dracula,
+            //Item_Cloak_T02_HolyPaladin,
+            //Item_Cloak_T02_HarpyMatriarch,
+            //Item_Cloak_T02_PatchedCloak,
+            //Item_Cloak_T02_Poloma,
+            //Item_Cloak_T02_TornRags,
             Item_Headgear_WolfTrophy01,
             Item_Headgear_WolfTrophy02,
             Item_Headgear_WerewolfTrophy,

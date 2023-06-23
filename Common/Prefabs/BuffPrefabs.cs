@@ -13,6 +13,10 @@ namespace DuelsServer.Common.Prefabs
         public static readonly PrefabGUID AB_Consumable_PhysicalBrew_T02_AbilityGroup = new(1195333673); // Зелье ярости баф
         public static readonly PrefabGUID AB_Consumable_PhysicalBrew_T01_AbilityGroup = new(-1506728203); // Отвар неистовства баф
 
+
+        public static readonly PrefabGUID WolfNormal = new(-351718282);
+        public static readonly PrefabGUID WolfStygian = new(-1158884666);
+
         public static readonly System.Collections.Generic.List<PrefabGUID> consumableBuffList = new System.Collections.Generic.List<PrefabGUID>()
         {
             AB_Consumable_SpellBrew_T02_AbilityGroup,

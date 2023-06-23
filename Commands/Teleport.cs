@@ -57,58 +57,52 @@ namespace DuelsServer.Commands
             if (arg1 == "list")
             {
                 string message = $"<color=#37DE6A>Список телепортов:</color> \n";
-                foreach (var item in Database.teleports)
+                foreach (var item in Plugin.teleports)
                 {
-                    message += "<color=#37DE6A>.tp " + item.Key + "</color> \n";
+                    message += "<color=#37DE6A>.tp " + item.Name + "</color> \n";
                 }
                 ctx.Reply(message);
                 return;
             }
 
-            TeleportsData teleportData;
-            if (Database.teleports.TryGetValue(arg1, out teleportData))
+            TeleportsData teleportData = Plugin.teleports.Find(t => t.Name == arg1);
+            if (teleportData.Name != null)
             {
                 CharacterHelpers.TeleportToPos(ctx.Event.SenderUserEntity, new float3(teleportData.X, teleportData.Y, teleportData.Z));
-
-                return;
             }
             else
             {
-                ctx.Reply(String.Format($"<color=#FF0000>Точка \"{arg1}\" не найдена. Воспользуйтесь командой <color=#37DE6A>.tp list</color> для получения всех существующих точек.</color>"));
-                return;
+                ctx.Reply($"<color=#FF0000>Точка \"{arg1}\" не найдена. Воспользуйтесь командой <color=#37DE6A>.tp list</color> для получения всех существующих точек.</color>");
             }
         }
 
         public static void AddTeleport(float3 location, string name, ChatCommandContext ctx)
         {
-            foreach (var teleport in Database.teleports)
+            foreach (var teleport in Plugin.teleports)
             {
-                if (teleport.Key == name)
+                if (teleport.Name == name)
                 {
                     ctx.Reply(String.Format($"<color=#FF0000>Точка с таким названием уже существует.</color>"));
                     return;
                 }
             }
-            Database.teleports.Add(name, new TeleportsData(name, location.x, location.y, location.z));
+            Plugin.teleports.Add(new TeleportsData(name, location.x, location.y, location.z));
             SaveTeleports();
             ctx.Reply(String.Format($"<color=#37DE6A>Точка \"{name}\" сохранена.</color>"));
         }
 
         public static void RemoveTeleport(string name, ChatCommandContext ctx)
         {
-            TeleportsData teleportData;
-
-            if (Database.teleports.TryGetValue(name, out teleportData))
+            int index = Plugin.teleports.FindIndex(t => t.Name == name);
+            if (index != -1)
             {
-                Database.teleports.Remove(name);
+                Plugin.teleports.RemoveAt(index);
                 SaveTeleports();
-                ctx.Reply(String.Format($"<color=#37DE6A>Точка \"{name}\" удалена.</color>"));
-                return;
+                ctx.Reply($"<color=#37DE6A>Точка \"{name}\" удалена.</color>");
             }
             else
             {
-                ctx.Reply(String.Format($"<color=#FF0000>Точка \"{name}\" не найдена. Воспользуйтесь командой <color=#37DE6A>.tp list</color> для получения всех существующих точек.</color>"));
-                return;
+                ctx.Reply($"<color=#FF0000>Точка \"{name}\" не найдена. Воспользуйтесь командой <color=#37DE6A>.tp list</color> для получения всех существующих точек.</color>");
             }
         }
 
@@ -116,7 +110,7 @@ namespace DuelsServer.Commands
         {
             string directoryPath = "BepInEx/config/DuelsServer/Saves/";
             string filePath = Path.Combine(directoryPath, "teleports.json");
-            string fileContent = "{}"; 
+            string fileContent = "[]"; 
 
             if (!Directory.Exists(directoryPath))
             {
@@ -130,11 +124,11 @@ namespace DuelsServer.Commands
 
             string json = File.ReadAllText("BepInEx/config/DuelsServer/Saves/teleports.json");
 
-            Database.teleports = JsonSerializer.Deserialize<Dictionary<string, TeleportsData>>(json);
+            Plugin.teleports = JsonSerializer.Deserialize<List<TeleportsData>>(json);
         }
         public static void SaveTeleports()
         {
-            File.WriteAllText("BepInEx/config/DuelsServer/Saves/teleports.json", JsonSerializer.Serialize(Database.teleports, Database.JSON_options));
+            File.WriteAllText("BepInEx/config/DuelsServer/Saves/teleports.json", JsonSerializer.Serialize(Plugin.teleports, Database.JSON_options));
         }
     }
 }

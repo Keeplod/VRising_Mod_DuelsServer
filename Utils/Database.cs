@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using DuelsServer.Common.Structs;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +22,5 @@ namespace DuelsServer.Utils
             WriteIndented = true,
             IncludeFields = true
         };
-
-        public static Dictionary<string, TeleportsData> teleports { get; set; }
-        public static Dictionary<string, ArenasData> arenas { get; set; }
-        public static Dictionary<string, PlayerRatingData> rating { get; set; }
     }
 }

@@ -6,7 +6,6 @@ using HarmonyLib;
 using ProjectM;
 using ProjectM.Network;
 using Unity.Collections;
-using Unity.Entities;
 
 namespace DuelsServer.Hooks
 {

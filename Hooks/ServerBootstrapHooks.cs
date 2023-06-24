@@ -1,10 +1,9 @@
-﻿using HarmonyLib;
+﻿using DuelsServer.Common.Position;
 using DuelsServer.Helpers;
+using HarmonyLib;
 using ProjectM;
 using ProjectM.Network;
 using Stunlock.Network;
-using DuelsServer.Common.Position;
-using ProjectM.Gameplay.Systems;
 
 namespace DuelsServer.Hooks;
 

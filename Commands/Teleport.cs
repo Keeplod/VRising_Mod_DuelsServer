@@ -1,13 +1,9 @@
-﻿using DuelsServer.Helpers;
+﻿using DuelsServer.Common.Structs;
+using DuelsServer.Helpers;
 using DuelsServer.Utils;
-using Newtonsoft.Json;
-using ProjectM.Network;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 using VampireCommandFramework;
@@ -20,59 +16,67 @@ namespace DuelsServer.Commands
         [Command("teleport", "tp", description: "teleport <Name|Set|Remove|List> [<Name>] Телепортирует в указанную точку.", adminOnly: false)]
         public static void tp(ChatCommandContext ctx, string Arg1 = null, string Arg2 = null)
         {
-            var arg1 = Arg1?.ToLower();
-            var arg2 = Arg2?.ToLower();
+            int index = Plugin.onlineArenas.FindIndex(t => t.Player1.Name.Equals(ctx.Event.User.CharacterName) || t.Player2.Name.Equals(ctx.Event.User.CharacterName));
+            if (index == -1)
+            {
+                var arg1 = Arg1?.ToLower();
+                var arg2 = Arg2?.ToLower();
 
-            if (arg1 == null)
-            {
-                ctx.Reply(String.Format("<color=#FF0000>Не указана точка: (<color=#37DE6A>.tp NamePoint</color>)</color>"));
-                return;
-            }
-            if ((arg1 == "set" && arg2 == null) || (arg1 == "remove" && arg2 == null))
-            {
-                ctx.Reply(String.Format($"<color=#FF0000>Не указана точка:  (<color=#37DE6A>.tp {arg1} NamePoint</color>)</color>"));
-                return;
-            }
-
-            if (arg1 == "set")
-            {
-                if (ctx.Event.User.IsAdmin)
+                if (arg1 == null)
                 {
-                    var pos = VWorld.Server.EntityManager.GetComponentData<LocalToWorld>(ctx.Event.SenderCharacterEntity).Position;
-                    AddTeleport(pos, arg2, ctx);
+                    ctx.Reply(String.Format("<color=#FF0000>Не указана точка: (<color=#37DE6A>.tp NamePoint</color>)</color>"));
+                    return;
                 }
-                return;
-            }
-
-            if (arg1 == "remove")
-            {
-                if (ctx.Event.User.IsAdmin)
+                if ((arg1 == "set" && arg2 == null) || (arg1 == "remove" && arg2 == null))
                 {
-                    var pos = VWorld.Server.EntityManager.GetComponentData<LocalToWorld>(ctx.Event.SenderCharacterEntity).Position;
-                    RemoveTeleport(arg2, ctx);
+                    ctx.Reply(String.Format($"<color=#FF0000>Не указана точка:  (<color=#37DE6A>.tp {arg1} NamePoint</color>)</color>"));
+                    return;
                 }
-                return;
-            }
 
-            if (arg1 == "list")
-            {
-                string message = $"<color=#37DE6A>Список телепортов:</color> \n";
-                foreach (var item in Plugin.teleports)
+                if (arg1 == "set")
                 {
-                    message += "<color=#37DE6A>.tp " + item.Name + "</color> \n";
+                    if (ctx.Event.User.IsAdmin)
+                    {
+                        var pos = VWorld.Server.EntityManager.GetComponentData<LocalToWorld>(ctx.Event.SenderCharacterEntity).Position;
+                        AddTeleport(pos, arg2, ctx);
+                    }
+                    return;
                 }
-                ctx.Reply(message);
-                return;
-            }
 
-            TeleportsData teleportData = Plugin.teleports.Find(t => t.Name == arg1);
-            if (teleportData.Name != null)
-            {
-                CharacterHelpers.TeleportToPos(ctx.Event.SenderUserEntity, new float3(teleportData.X, teleportData.Y, teleportData.Z));
+                if (arg1 == "remove")
+                {
+                    if (ctx.Event.User.IsAdmin)
+                    {
+                        var pos = VWorld.Server.EntityManager.GetComponentData<LocalToWorld>(ctx.Event.SenderCharacterEntity).Position;
+                        RemoveTeleport(arg2, ctx);
+                    }
+                    return;
+                }
+
+                if (arg1 == "list")
+                {
+                    string message = $"<color=#37DE6A>Список телепортов:</color> \n";
+                    foreach (var item in Plugin.teleports)
+                    {
+                        message += "<color=#37DE6A>.tp " + item.Name + "</color> \n";
+                    }
+                    ctx.Reply(message);
+                    return;
+                }
+
+                TeleportsData teleportData = Plugin.teleports.Find(t => t.Name == arg1);
+                if (teleportData.Name != null)
+                {
+                    CharacterHelpers.TeleportToPos(ctx.Event.SenderUserEntity, new float3(teleportData.X, teleportData.Y, teleportData.Z));
+                }
+                else
+                {
+                    ctx.Reply($"<color=#FF0000>Точка \"{arg1}\" не найдена. Воспользуйтесь командой <color=#37DE6A>.tp list</color> для получения всех существующих точек.</color>");
+                }
             }
             else
             {
-                ctx.Reply($"<color=#FF0000>Точка \"{arg1}\" не найдена. Воспользуйтесь командой <color=#37DE6A>.tp list</color> для получения всех существующих точек.</color>");
+                ctx.Reply($"<color=#FF0000>Вы не можите использовать данную команду на арене!</color>");
             }
         }
 

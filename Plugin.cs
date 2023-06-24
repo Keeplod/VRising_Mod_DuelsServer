@@ -22,12 +22,10 @@ namespace DuelsServer
 
         public static List<TeleportsData> teleports = new List<TeleportsData>();
         public static List<ArenasData> arenas = new List<ArenasData>();
-        public static List<PlayerRatingData> tableRatingPlayers = new List<PlayerRatingData>();
+        public static List<PlayerRating> tableRatingPlayers = new List<PlayerRating>();
 
         public static List<PlayerCTX> onlineQueueArena = new List<PlayerCTX>();
         public static List<OnlineArena> onlineArenas = new List<OnlineArena>();
-
-
 
         public override void Load()
         {

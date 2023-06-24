@@ -1,4 +1,5 @@
-﻿using DuelsServer.Common.Prefabs;
+﻿using DuelsServer.Common.Position;
+using DuelsServer.Common.Prefabs;
 using Il2CppSystem;
 using ProjectM;
 using ProjectM.Network;
@@ -28,14 +29,22 @@ namespace DuelsServer.Helpers
             });
         }
 
-        public static void RespawnCharacter(Entity VictimEntity, PlayerCharacter player, Entity userEntity)
+        public static void RespawnCharacter(Entity VictimEntity, Entity userEntity, bool toSpawn = false)
         {
             var pos = VWorld.Server.EntityManager.GetComponentData<LocalToWorld>(VictimEntity).Position;
             var bufferSystem = VWorld.Server.GetExistingSystem<EntityCommandBufferSystem>();
             var commandBufferSafe = bufferSystem.CreateCommandBuffer();
 
             Nullable_Unboxed<float3> spawnLoc = new();
-            spawnLoc.value = new(pos.x, pos.y, pos.z);
+            if (toSpawn)
+            {
+                spawnLoc.value = ServerPositions.Pos_Spawn;
+            }
+            else
+            {
+                spawnLoc.value = new(pos.x, pos.y, pos.z);
+            }
+            
             spawnLoc.has_value = true;
 
             var server = VWorld.Server.GetOrCreateSystem<ServerBootstrapSystem>();

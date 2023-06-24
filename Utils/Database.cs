@@ -1,12 +1,4 @@
-﻿using DuelsServer.Common.Structs;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
 
 namespace DuelsServer.Utils
 {
@@ -16,11 +8,6 @@ namespace DuelsServer.Utils
         {
             WriteIndented = false,
             IncludeFields = false
-        };
-        public static JsonSerializerOptions Pretty_JSON_options = new()
-        {
-            WriteIndented = true,
-            IncludeFields = true
         };
     }
 }

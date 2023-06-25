@@ -20,7 +20,7 @@ namespace DuelsServer.Commands
 
             ctx.Reply(message1);
             ctx.Reply(message2);
-            ctx.Reply("<color=#E339A4>Наш дискорд: https://discord.gg/EXKGV52csa</color>");
+            ctx.Reply("<color=#447BD4>Наш дискорд: https://discord.gg/EXKGV52csa</color>");
         }
     }
 }

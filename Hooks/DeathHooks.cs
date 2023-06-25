@@ -60,8 +60,8 @@ public class DeathEventListenerSystem_Patch
 
                             int rating = Rating.EditRating(Plugin.onlineArenas[index].Player2.Name.ToString(), Plugin.onlineArenas[index].Player1.Name.ToString());
 
-                            ServerChatUtils.SendSystemMessageToClient(Plugin.EntityManager, Plugin.onlineArenas[index].Player1.User, $"<color=#FF0000>Вы проиграли в схаватке с {Plugin.onlineArenas[index].Player2.Name} и получили -{rating}ммр</color>");
-                            ServerChatUtils.SendSystemMessageToClient(Plugin.EntityManager, Plugin.onlineArenas[index].Player2.User, $"<color=#37DE6A>Вы победили в схаватке с {Plugin.onlineArenas[index].Player1.Name} и получили +{rating}ммр</color>");
+                            ServerChatUtils.SendSystemMessageToClient(Plugin.EntityManager, Plugin.onlineArenas[index].Player1.User, $"<color=#FF0000>Вы проиграли в схаватке с \"{Plugin.onlineArenas[index].Player2.Name}\" -{rating}ммр</color>");
+                            ServerChatUtils.SendSystemMessageToClient(Plugin.EntityManager, Plugin.onlineArenas[index].Player2.User, $"<color=#37DE6A>Вы победили в схаватке с \"{Plugin.onlineArenas[index].Player1.Name}\" +{rating}ммр</color>");
 
                             Plugin.onlineArenas.RemoveAt(index);
                         }
@@ -72,8 +72,8 @@ public class DeathEventListenerSystem_Patch
 
                             int rating = Rating.EditRating(Plugin.onlineArenas[index].Player1.Name.ToString(), Plugin.onlineArenas[index].Player2.Name.ToString());
 
-                            ServerChatUtils.SendSystemMessageToClient(Plugin.EntityManager, Plugin.onlineArenas[index].Player1.User, $"<color=#37DE6A>Вы победили в схаватке с {Plugin.onlineArenas[index].Player2.Name} и получили +{rating}ммр</color>");
-                            ServerChatUtils.SendSystemMessageToClient(Plugin.EntityManager, Plugin.onlineArenas[index].Player2.User, $"<color=#FF0000>Вы проиграли в схаватке с {Plugin.onlineArenas[index].Player1.Name} и получили -{rating}ммр</color>");
+                            ServerChatUtils.SendSystemMessageToClient(Plugin.EntityManager, Plugin.onlineArenas[index].Player1.User, $"<color=#37DE6A>Вы победили в схаватке с \"{Plugin.onlineArenas[index].Player2.Name}\" +{rating}ммр</color>");
+                            ServerChatUtils.SendSystemMessageToClient(Plugin.EntityManager, Plugin.onlineArenas[index].Player2.User, $"<color=#FF0000>Вы проиграли в схаватке с \"{Plugin.onlineArenas[index].Player1.Name}\" -{rating}ммр</color>");
 
                             Plugin.onlineArenas.RemoveAt(index);
                         }

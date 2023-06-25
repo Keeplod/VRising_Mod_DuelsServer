@@ -1,5 +1,4 @@
 ﻿using ProjectM;
-using System;
 using Unity.Entities;
 
 
@@ -17,7 +16,7 @@ namespace DuelsServer.Helpers
 
                 return inventoryResponse.NewEntity;
             }
-            catch (Exception e)
+            catch
             {
                 
             }

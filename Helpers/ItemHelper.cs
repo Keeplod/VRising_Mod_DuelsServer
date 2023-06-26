@@ -11,7 +11,7 @@ namespace DuelsServer.Helpers
             try
             {
                 var gameData = VWorld.Server.GetExistingSystem<GameDataSystem>();
-                var itemSettings = AddItemSettings.Create(VWorld.Server.EntityManager, gameData.ItemHashLookupMap);
+                var itemSettings = AddItemSettings.Create(VWorld.Server.EntityManager, gameData.ItemHashLookupMap, true);
                 var inventoryResponse = InventoryUtilitiesServer.TryAddItem(itemSettings, recipient, guid, amount);
 
                 return inventoryResponse.NewEntity;

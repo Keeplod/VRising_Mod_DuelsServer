@@ -1,4 +1,5 @@
-﻿using DuelsServer.Common.Position;
+﻿using DuelsServer.Commands;
+using DuelsServer.Common.Position;
 using DuelsServer.Helpers;
 using HarmonyLib;
 using ProjectM;
@@ -28,6 +29,20 @@ public class ServerBootstrapHooks
                 {
                     CharacterHelpers.TeleportToPos(serverClient.UserEntity, ServerPositions.Pos_Spawn);
                 }
+
+                string message = "<color=#447BD4>Дискорд: https://discord.gg/EXKGV52csa</color> \n";
+                message += "<color=#FFD300>Используй <color=#FF0000>.kit</color> для получения экипировки\n</color>";
+                message += "<size=150%><color=#FFD300>Вы тут впервые? Используй <color=#FF0000>.help</color>!</color></size>";
+                ServerChatUtils.SendSystemMessageToClient(Plugin.EntityManager, userData, message);
+
+
+                SetDebugSettingEvent setDebugSettingEvent = new()
+                {
+                    SettingType = DebugSettingType.DropsDisabled,
+                    Value = true,
+                };
+                VWorld.Server.GetExistingSystem<DebugEventsSystem>().SetDebugSetting(userIndex, ref setDebugSettingEvent);
+
             }
             catch { }
         }
